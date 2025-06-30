@@ -587,7 +587,9 @@ body {
     color: #4a4a4a;
     font-size: 1em;
     font-weight: 400;
-    line-height: 1.5
+    line-height: 1.5;
+    background: linear-gradient(to bottom, #213b61 0%, #ebeff5 20%);
+    margin: 0;
 }
 
 a {
@@ -11496,15 +11498,9 @@ screen and (min-width:769px) {
     background-color: #409085;
     color: #fff
 } */
-.hero.is-primary {
-    background-image:
-    linear-gradient(to top, rgba(255, 255, 255, 1.0) 0%, rgba(255, 255, 255, 0) 50%),
-    linear-gradient(125deg, rgb(248, 230, 70), rgb(224, 89, 241), rgb(7, 135, 255));
-  background-size: cover;
-  background-position: center;
-  background-size: 200%;
-  animation: bganimation 10s infinite;
-  }
+/* .hero.is-primary {
+    background: linear-gradient(to top, rgba(235, 239, 245 1.0) 100%, rgba(61, 84, 117, 1) 100%);
+} */
 
 .hero.is-primary a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current),
 .hero.is-primary strong {
