@@ -3345,7 +3345,8 @@ div.icon-text {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start
+    justify-content: flex-start;
+    padding-top: .8rem;
 }
 
 .tags .tag {
