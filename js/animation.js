@@ -1,4 +1,6 @@
 var canvas = document.createElement("canvas");
+var body = document.getElementsByTagName("body");
+
 var width = canvas.width = window.innerWidth * 0.75;
 canvas.style.position = "absolute";
 canvas.style.top = "0";
@@ -6,7 +8,7 @@ canvas.style.left = "0";
 canvas.style.zIndex = "-1";
 document.body.style.margin = "0";
 document.body.style.overflow = "hidden";
-var height = canvas.height = window.innerHeight * 0.75;
+var height = canvas.height = document.body.scrollHeight * 0.75;
 document.body.appendChild(canvas);
 
 var gl = canvas.getContext('webgl');
