@@ -43,8 +43,12 @@
     <div class="container">
       <h1 class="title">About Me</h1>
       <hr />
-      <p>Hello! I'm Angel (Luchcha) Lam — a lifelong learner driven by a passion for computer graphics and the intersection of art and technology. With over 5 years of experience in the animation and games industry, I'm continually seeking opportunities to push the boundaries of immersive storytelling and innovative visual experiences. My goal is to create meaningful, joyful, and visually compelling experiences through graphics-driven technology. Originally from Bangkok, Thailand, I bring a global perspective and a curious spirit to everything I do. Outside of work, you'll likely find me on a mission to discover the best ice-creams, indulging in 75% dark chocolate, or balancing it all out with a game of ultimate frisbee, thai boxing, or getting some fresh air outdoors.</p>
-    </div>
+      <div class="card">
+        <div class="card-content">
+          <p>Hello! I'm Angel (Luchcha) Lam — a lifelong learner driven by a passion for computer graphics and the intersection of art and technology. With half a decade of experience in the animation and games industry, I'm continually seeking opportunities to push the boundaries of immersive storytelling and innovative visual experiences. My goal is to create meaningful, joyful, and visually compelling experiences through graphics-driven technology. Originally from Bangkok, Thailand, I bring a global perspective and a curious spirit to everything I do. Outside of work, you'll likely find me on a mission to discover the best ice-creams, indulging in 75% dark chocolate, or balancing it all out with a game of ultimate frisbee, thai boxing, or getting some fresh air outdoors.</p>
+        </div>
+        </div>
+      </div>
   </section>
   <section class="section">
     <div class="container">
@@ -120,10 +124,10 @@
             </div>
           </div>
           <div class="content">
-            <p>As a Pipeline Technical Director, I maintained and developed tools, both standalone and as plugins for DCC tools such as Autodesk Maya.
-              I collaborated with IT to set up a 2D render farm for Toonboom Harmony and established a streamlined and trackable pipeline for 2D productions from pre to post production.
-              I enjoyed learning about new softwares such as Harmony through collaborating with Harmony's support team and learning from our artists to create tools they would want to use.
-              The public projects I supported was:
+            <p>As a Pipeline Technical Director, I maintained and developed tools, both standalone and as plugins for DCC tools such as Autodesk Maya and Toonboom Harmony.
+              I collaborated with IT to set up a 2D render farm and established a streamlined and trackable pipeline for 2D productions from pre to post production.
+              I enjoyed learning new softwares such as Harmony through collaborating with Harmony's support team and from our artists to create tools that artists would want to use.
+              The public projects I supported were:
             </p>
             <ul>
               <li>Netflix's Sea of Love - Thailand's first Netflix kids series</li>
@@ -154,7 +158,7 @@
             </div>
           </div>
           <div class="content">
-            <p>As an animation engineer, I write tools to support different departments within Nickelodeon animation.
+            <p>As an animation engineer, I wrote tools to support different departments within Nickelodeon animation.
               I Collaborated with the production team on a tool to process deliveries from vendor studios into our local file server and the Shotgrid database using Python and the Shotgrid API.
               I worked with the Archiving Team to expedite their archiving process using Python, setup a database and wrote a tool that tracks and enable other teams to request archived assets.
             </p>
@@ -336,7 +340,7 @@
               <p class="subtitle is-6">Purdue University – <time datetime="2023-8">August 2023</time></p>
             </div>
             <div class="content">
-              As part of our lab's research on AI-driven educational studios, my Master's thesis explored the realism of virtual characters.
+              As part of our lab's research on AI-driven STEM educational videos, my Master's thesis explored the realism of virtual characters.
             </div>
           </div>
         </div>
@@ -417,23 +421,24 @@
       <section class="modal-card-body">
 
         <div id="project-1-modal-carousel" class="carousel">
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/jello.gif">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/jello_debug.gif">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/jello_physics.gif">
           </figure>
         </div>
 
         <div class="content">
-
-          <p>In a team of 2, we implemented a real-time jello simulation with OpenGL and C++. I was responsible for implementing the physics and interactions. The jello is based on a mass-spring system using Euler integration and Runge-Kutta 4th order.</p>
-          <p>
-            Future improvements:
-            <br>We would like to implement allow the jello to jiggle of the plate and collide with other objects in the bounding box.
+          <p>As part of a two-person team, I developed a real-time jello simulation using OpenGL and C++. My primary responsibilities included implementing the underlying physics and interactive behaviors. The simulation models the jello as a mass-spring system, utilizing both Euler and fourth-order Runge-Kutta integration methods for numerical stability and accuracy. To simulate translucency, we applied Beer's Law for light attenuation through the material. Performance was optimized using OpenMP for parallel computation.</p>
+          <p><b>Future Improvements:</b>
+            <br>- Implement per-vertex lighting to eliminate the appearance of flat, triangulated surfaces when the jello mesh is rendered at low resolution.
+            <br>- Add a skybox or dynamic background to replace the solid color and better showcase the material properties and translucency of the jello.
+            <br>- Accelerate the simulation using compute shaders by offloading physics calculations to the GPU for improved performance and real-time interactivity.
+            <br>- Allow the jello to freely jiggle off the plate and interact dynamically with other objects within the bounding box.
           </p>
           <p><a href src="https://github.com/VarunRamakri7/Jello" target="_blank">Checkout the Github project here!</a></p>
 
@@ -456,19 +461,21 @@
       <section class="modal-card-body">
 
         <div id="project-2-modal-carousel" class="carousel">
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/pathtracer.gif">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/purdue_pathtracer.jpg">
           </figure>
         </div>
 
         <div class="content">
 
-          <p>In a team of 2, we implemented a Monte Carlo Path Tracer that runs purely on the CPU with C++. Our Path Tracer is able to load and render .obj models and support diffuse, specular, gloss and glass materials using bidirectional reflectance distribution functions (BRDF). We accelerated our program using bounding volume hierarchies and OpenMP. We later rendered scenes with different triangle counts and materials to benchmark the results which can be viewed on our Github page.</p>
-          <p>Future improvements:
-            <br>We would like to implement a built in Denoiser to reduce the noise in our output, importance sampling to speed up the calculation and possibly a CUDA implementation.
+          <p>As part of a two-person team, we developed a CPU-based Monte Carlo Path Tracer in C++. The renderer supports loading and rendering of .obj models and simulates a variety of materials—including diffuse, specular, glossy, and glass—using bidirectional reflectance distribution functions (BRDFs). To improve performance, we implemented bounding volume hierarchies (BVH) for spatial acceleration and leveraged OpenMP for parallel processing. We conducted performance benchmarking across scenes with varying triangle counts and material properties, with detailed results available on our GitHub repository.</p>
+          <p>
+            <b>Future Improvements:</b>
+            <br>- Implement a built in denoiser to reduce the noise in our output
+            <br>- Accelerate compute time using importance sampling and CUDA
           </p>
           <p><a href src="https://github.com/JCSaltFish/PBRPathTracer" target="_blank">Checkout the Github project here!</a></p>
 
@@ -490,16 +497,16 @@
       </header>
       <section class="modal-card-body">
         <div id="project-3-modal-carousel" class="carousel">
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/shader.gif">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/shader.png">
           </figure>
         </div>
 
         <div class="content">
-          <p>In a team of 2 we made a fun program that showcases non-photorealistic rendering with smoothed-particle hydrodynamics (SPH). My partner was responsible for implementing the physics and I was responsible for the visual aspects. The user can select the colors of the outline, background and tones in the non-photorealistic shader. The user can also change the particle sizes and the model displayed.</p>
+          <p>As part of a two-person team, we developed an interactive application demonstrating non-photorealistic rendering techniques combined with smoothed-particle hydrodynamics (SPH). My teammate focused on implementing the SPH-based fluid simulation, while I was responsible for the visual design and shading. The program features a customizable non-photorealistic shader that allows users to adjust outline, background, and tone colors in real time. Users can also modify particle sizes and switch between different 3D models for visualization.</p>
           <p><a href src="https://github.com/VarunRamakri7/NPR-SPH" target="_blank">Checkout the Github project here!</a></p>
 
           <div class="tags">
@@ -521,21 +528,20 @@
       </header>
       <section class="modal-card-body">
         <div id="project-4-modal-carousel" class="carousel">
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/ml_style.jpg">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/ml_voxel.jpg">
           </figure>
         </div>
 
         <div class="content">
           <p>
-            <strong>Pixel to Style</strong>
-            <br>I read a paper (link) and was intrigued by the StyleGAN architecture and decided to train a StyleGAN with the MetFaces database (consisting of paintings and sculptures) which resulted in painterly portraits rather than and realistic portrait. I also did some inference tests with the pertained Pixel2Style2Pixel (pSp) framework to get Toonified faces, faces from sketches and faces from segmentation..</p>
-
-            <strong>Pixel to Voxel</strong>
-            <br>I was exploring the use of deep learning in 3D workflows and stumbled upon a paper (link) that predicts voxels from sketches. I drew a 3D “P”, used a pre-trained model, created with the Caffe framework, to output a volumetric prediction matrix and visualized the voxels using MatPlotLib.
+            <b>Pixel to Style</b>
+            <br>I read a <a href src="https://arxiv.org/abs/2008.00951">paper</a> and was intrigued by the StyleGAN architecture and decided to train a StyleGAN with the MetFaces database (consisting of paintings and sculptures) which resulted in painterly portraits rather than and realistic portrait. I also did some inference tests with the pertained Pixel2Style2Pixel (pSp) framework to get Toonified faces, faces from sketches and faces from segmentation.</p>
+            <b>Pixel to Voxel</b>
+            <br>I explored the use of deep learning in 3D workflows and stumbled upon a <a href src="https://dl.acm.org/doi/10.1145/3203197">paper</a> that predicts voxels from sketches. I drew a 3D “P”, used a pre-trained model, created with the Caffe framework, to output a volumetric prediction matrix and visualized the voxels using MatPlotLib.
 
             <div class="tags">
             <span class="tag">PyTorch</span>
@@ -560,22 +566,16 @@
               <iframe style="width: 100%; height: 100%;" src="https://player.vimeo.com/video/1097376273?h=a0b6e67add" allowfullscreen></iframe>
             </div>
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/unreal_material.jpg">
           </figure>
-          <figure class="image is-4by3 carousel-cell">
+          <figure class="image carousel-cell">
             <img src="img/unreal_vp.png">
           </figure>
         </div>
 
         <div class="content">
-          <p>
-            I enjoy learning new softwares and understanding the creative capabilities from an artist perspective.
-            My experiences with Unreal includes implementing an interactive VR experience where I got to learn about game mechanics with Blueprints and scene optimization.
-            It was a fun project where we had to also consider common VR user experience issues such as motion sickness and navigation methods.
-            I've also explored Materials/instances, tools for terrains and lighting.
-            I took a Gnonom class on creating environments for Virtual Production, where we had to consider camera moves and virtual/physical spaces.
-          </p>
+          <p>My experience with Unreal Engine includes developing an interactive VR experience, where I gained hands-on knowledge of gameplay mechanics using Blueprints and scene optimization techniques. This project also required addressing common VR user experience challenges such as motion sickness and intuitive navigation. In addition, I've worked with Unreal's material and instance systems, terrain tools, and lighting workflows. I further expanded my skills through a course at Gnomon on creating environments for Virtual Production, which emphasized the relationship between virtual and physical spaces, as well as planning for camera movement within those environments.</p>
             <div class="tags">
             <span class="tag">Unreal</span>
             <span class="tag">Virtual Production</span>
@@ -600,11 +600,7 @@
           </div>
         </figure>
         <div class="content">
-          <p>
-            With my animation background, I enjoy creating tools in digital content creation softwares such as Maya to increase artists' efficiency.
-            I am also fascinated by the mechanics of movements and rigging that enables animators to bring characters to life.
-            I believe that my experience as an artist help me anticipate the needs of artists and allow me to create tools that are enjoyable and easy for artists to use.
-          </p>
+          <p>With a background in animation, I enjoy developing tools within digital content creation software such as Maya to enhance artist workflows and improve production efficiency. I'm particularly fascinated by the mechanics of movement and rigging systems that empower animators to bring characters to life. My experience as an artist allows me to better anticipate the needs of creative teams and design tools that are both intuitive and enjoyable to use.</p>
           <div class="tags">
             <span class="tag">Maya</span>
             <span class="tag">Rigging</span>
@@ -635,8 +631,10 @@
             In a team of 2, we wanted to learn Qt and complement our OpenGL implementation with a nice UI so we decided to create a 3D space for users to play with using Qt, Qt’s OpenGL framework and C++. We also utilized external libraries such as Assimp, IFreeImage and IrrKlang to assist in loading 3D models, textures and audio.
           </p>
           <p>
-            Future improvements:
-          <br>We would like to provide more controls such as uniform scaling and drag/drop objects directly onto cursor’s position, instancing for better performance and explore other graphics API such as Vulkan.
+            <b>Future Improvements:</b>
+            <br>- Add enhanced user controls, such as uniform scaling and the ability to drag and drop objects directly to the cursor’s position.
+            <br>- Implement instancing to improve rendering performance and memory efficiency.
+            <br>- Explore alternative graphics APIs, such as Vulkan, to gain finer control over performance and resource management.
           </p>
 
           <div class="tags">
@@ -663,7 +661,7 @@
 
         <div class="content">
           <p>
-            For Hack at Brown in 2017, my team designed a device to aid the visually impaired with transportation. Within 48 hours, we learned how to code and hardware hack the Arduino to respond to sensors and send buzzing signals to the user wearing the device. As a group of RISD and Brown students with completely different background and no engineering knowledge, we designed the mock up as well as making a working prototype to present to other groups. We won the first time hacker award.
+            For Hack at Brown in 2017, my team designed a device to aid the visually impaired with transportation. The device sends haptic signals to the user when they approach any obstacle. Within 48 hours, we learned how to code and hardware hack the Arduino. As a group of RISD and Brown students with completely different background and no engineering knowledge, we designed the mock up as well as making a working prototype to present to other groups. We won the first time hacker award.
           </p>
 
           <div class="tags">
@@ -712,10 +710,10 @@
         <div class="content">
           <p>Outside of programming, I enjoy drawing, painting and making animations.
           <br>
-          <br>1. Cooking Disaster
-          <br>2. Dog Portraits
-          <br>3. When Bone Meets Meat
-          <br>4. Lobster Spa
+          <br>1. Cooking Disaster (watercolor and digital painting)
+          <br>2. Dog Portraits (acrylic on canvas)
+          <br>3. When Bone Meets Meat (digital painting)
+          <br>4. Lobster Spa (watercolor)
           <br>5. According To Plan
           <br>6. 2D Shorts
           </p>
