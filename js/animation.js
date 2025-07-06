@@ -13,6 +13,18 @@ document.body.appendChild(canvas);
 
 var gl = canvas.getContext('webgl');
 
+// Resize on window change
+window.addEventListener('resize', resizeCanvas);
+
+function resizeCanvas() {
+  // Set canvas size to match display size
+  width = canvas.width = window.innerWidth * 0.75;
+  height = canvas.height = document.body.scrollHeight * 0.75;
+
+  // Update WebGL viewport
+  gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+}
+
 var mouse = {x: 0, y: 0};
 
 var numMetaballs = 30;
