@@ -12208,3 +12208,9 @@ screen and (min-width:769px) {
     padding: 10px; /* Add some padding for spacing */
     font-weight: bold;
 }
+
+.top-contact {
+    display: inline-flex;
+    gap: 5rem;
+    align-items: center;
+}
