@@ -1,5 +1,8 @@
-var canvas = document.createElement("canvas");
-var body = document.getElementsByTagName("body");
+var canvas = document.getElementById("background-canvas");
+window.addEventListener("DOMContentLoaded", () => {
+  canvas = document.getElementById("background-canvas");
+  document.addEventListener("mousemove", getMousePos);
+});
 
 var width = canvas.width = window.innerWidth * 0.75;
 canvas.style.position = "absolute";
@@ -9,9 +12,10 @@ canvas.style.zIndex = "-1";
 document.body.style.margin = "0";
 document.body.style.overflow = "hidden";
 var height = canvas.height = document.body.scrollHeight * 0.75;
-document.body.appendChild(canvas);
 
 var gl = canvas.getContext('webgl');
+
+let cursor = { x: -100, y: -100, prevX: -100, prevY: -100, vx: 0, vy: 0 };
 
 // Resize on window change
 window.addEventListener('resize', resizeCanvas);
@@ -25,8 +29,32 @@ function resizeCanvas() {
   gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 }
 
-var mouse = {x: 0, y: 0};
+function getMousePos(event) {
+  // 0 0 and bottom left for canvas
+  // 0 0 is top left for event client
+  const rect = canvas.getBoundingClientRect();
 
+  // normalized X [0, 1]
+  let x = (event.clientX - rect.left) / rect.width;
+  let y = 1.0 - ((event.clientY - rect.top) / rect.height); // flip y
+
+  // to canvas space
+  x = x * width;
+  y = y * height;
+
+  // Compute cursor velocity
+  cursor.vx = x - cursor.x;
+  cursor.vy = y - cursor.y;
+
+  // Update cursor position
+  cursor.prevX = cursor.x;
+  cursor.prevY = cursor.y;
+  cursor.x = x;
+  cursor.y = y;
+}
+
+const max_speed_limit = 10.0;
+const min_speed_limit = 2.0;
 var numMetaballs = 30;
 var metaballs = [];
 
@@ -126,8 +154,38 @@ loop();
 function loop() {
   for (var i = 0; i < numMetaballs; i++) {
     var metaball = metaballs[i];
+
     metaball.x += metaball.vx;
     metaball.y += metaball.vy;
+
+    // Simple friction to slow the ball over time TODO but would it come to a stop?
+    metaball.vx *= 0.99;
+    metaball.vy *= 0.99;
+
+    let dir_x = 1;
+    let dir_y = 1;
+    if (metaball.vx < 0) dir_x = -1;
+    if (metaball.vy < 0) dir_y = -1;
+    let velocity_x = Math.abs(metaball.vx);
+    let velocity_y = Math.abs(metaball.vy);
+    // clamp velocity
+    velocity_x = Math.min(Math.max(velocity_x, min_speed_limit), max_speed_limit);
+    velocity_y = Math.min(Math.max(velocity_y, min_speed_limit), max_speed_limit);
+    metaball.vx = velocity_x * dir_x;
+    metaball.vy = velocity_y * dir_y;
+
+    // Bounce off cursors
+    const dx = metaball.x - cursor.x;
+    const dy = metaball.y - cursor.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    const influenceRadius = 50; // How close cursor needs to be
+    if (dist < influenceRadius) {
+      // Compute push factor (stronger when closer)
+      const factor = (influenceRadius - dist) / influenceRadius;
+      metaball.vx += cursor.vx * 0.1 * factor;
+      metaball.vy += cursor.vy * 0.1 * factor;
+    }
 
     if (metaball.x < metaball.r || metaball.x > width - metaball.r) metaball.vx *= -1;
     if (metaball.y < metaball.r || metaball.y > height - metaball.r) metaball.vy *= -1;
@@ -175,9 +233,4 @@ function getAttribLocation(program, name) {
     throw 'Can not find attribute ' + name + '.';
   }
   return attributeLocation;
-}
-
-canvas.onmousemove = function(e) {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
 }
